@@ -3,19 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>营销日报归档</title>
+  <title>每日情报归档</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px; color: #1d1d1f; }
-    h1 { font-size: 24px; margin-bottom: 30px; }
-    ul { list-style: none; }
-    li { padding: 10px 0; border-bottom: 1px solid #eee; }
-    a { color: #0071e3; text-decoration: none; font-size: 15px; }
-    a:hover { text-decoration: underline; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;background:#f4f4f6;color:#1a1a1a}
+    .hero{background:linear-gradient(135deg,#ff4e50 0%,#f9a825 100%);padding:32px 20px 24px}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.2);color:#fff;font-size:11px;padding:4px 10px;border-radius:12px;margin-bottom:14px}
+    .hero h1{font-size:26px;font-weight:800;color:#fff;margin-bottom:6px}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,0.8)}
+    .container{max-width:600px;margin:20px auto;padding:0 16px 48px}
+    .section-label{font-size:12px;font-weight:700;color:#888;letter-spacing:0.5px;margin:16px 0 10px;padding-left:2px}
+    .report-item{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:12px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .15s}
+    .report-item:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    .report-date{font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
+    .report-sub{font-size:12px;color:#aaa}
+    .report-arr{font-size:18px;color:#ccc}
+    .footer{text-align:center;font-size:12px;color:#bbb;padding:20px 0}
   </style>
 </head>
 <body>
-  <h1>📰 营销日报归档</h1>
-  <ul><li><a href="2026-03-28.html">📄 2026-03-28</a></li>
-</ul>
+<div class="hero">
+  <div class="hero-badge">📡 每日情报</div>
+  <h1>每日内容精选</h1>
+  <div class="hero-sub">AGI Hunt · 晚点 · 36氪 · 海外独角兽 · 阿里妈妈 · IT之家 · 大厂日爆</div>
+</div>
+<div class="container">
+  <div class="section-label">📅 历史归档</div>
+  
+    <a class="report-item" href="2026-03-28.html">
+      <div>
+        <div class="report-date">3月28日 周六<span style="background:#ef4444;color:#fff;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:8px">最新</span></div>
+        <div class="report-sub">2026-03-28</div>
+      </div>
+      <span class="report-arr">›</span>
+    </a>
+</div>
+<div class="footer">由 Peeta 自动生成</div>
 </body>
 </html>
