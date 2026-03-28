@@ -1,59 +1,244 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>营销日报 · 2026-03-28</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; background: #f5f5f7; color: #1d1d1f; }
-    .header { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 24px 0; text-align: center; }
-    .header h1 { font-size: 22px; font-weight: 700; color: #1d1d1f; }
-    .header .meta { font-size: 13px; color: #888; margin-top: 6px; }
-    .nav { background: #fff; padding: 10px 24px; border-bottom: 1px solid #e5e5e5; text-align: center; font-size: 13px; }
-    .nav a { color: #0071e3; margin: 0 8px; text-decoration: none; }
-    .container { max-width: 780px; margin: 24px auto; padding: 0 16px; }
-    .category { background: #fff; border-radius: 12px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
-    .category h2 { font-size: 15px; font-weight: 600; padding: 14px 20px; background: #f9f9f9; border-bottom: 1px solid #efefef; display: flex; align-items: center; gap: 8px; }
-    .count { background: #e5e5ea; border-radius: 10px; font-size: 12px; padding: 1px 8px; font-weight: 500; color: #555; }
-    .article { padding: 14px 20px; border-bottom: 1px solid #f0f0f0; }
-    .article:last-child { border-bottom: none; }
-    .article-source { font-size: 11px; color: #888; margin-bottom: 4px; }
-    .article-title { font-size: 14px; font-weight: 600; color: #0071e3; text-decoration: none; line-height: 1.5; display: block; }
-    .article-title:hover { text-decoration: underline; }
-    .article-summary { font-size: 12px; color: #666; margin-top: 5px; line-height: 1.6; }
-    .footer { text-align: center; font-size: 12px; color: #aaa; padding: 30px 0; }
-    .empty { text-align: center; padding: 60px; color: #aaa; font-size: 14px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日情报 · 2026-03-28</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f4f4f6;color:#1a1a1a}
+a{text-decoration:none;color:inherit}
+
+.hero{background:linear-gradient(135deg,#ff4e50 0%,#f9a825 100%);padding:28px 20px 22px;position:relative}
+.hero-back{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.22);color:#fff;font-size:12px;padding:4px 12px;border-radius:20px}
+.hero-back:hover{background:rgba(255,255,255,.38)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:11px;padding:3px 10px;border-radius:10px;margin-bottom:12px}
+.hero h1{font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.82);margin-bottom:14px;line-height:1.5}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px}
+.hero-tag{background:rgba(255,255,255,.18);color:#fff;font-size:11px;padding:3px 10px;border-radius:10px}
+
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 48px}
+
+.sec-label{font-size:11px;font-weight:700;color:#999;letter-spacing:.8px;text-transform:uppercase;margin:20px 0 10px 2px}
+
+/* Highlights */
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:4px}
+.hl-card{background:#fff;border-radius:12px;padding:15px 16px;box-shadow:0 1px 5px rgba(0,0,0,.07);display:block;transition:transform .15s,box-shadow .15s}
+.hl-card:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.1)}
+.hl-cat{font-size:11px;font-weight:700;margin-bottom:6px}
+.hl-text{font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.5;margin-bottom:6px}
+.hl-src{font-size:11px;margin-bottom:6px}
+.hl-arrow{font-size:11px;color:#bbb}
+
+/* 分类列表 */
+.cat-section{background:#fff;border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.06)}
+.cat-header{display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#fafafa;border-bottom:1px solid #f0f0f0}
+.cat-name{font-size:14px;font-weight:700}
+.cat-count{font-size:12px;color:#aaa;background:#f0f0f0;padding:2px 8px;border-radius:10px}
+.art-item{display:flex;align-items:flex-start;gap:10px;padding:12px 18px;border-bottom:1px solid #f5f5f5;transition:background .1s}
+.art-item:last-child{border-bottom:none}
+.art-item:hover:not(.no-link){background:#fafafa}
+.art-num{font-size:11px;color:#ccc;font-weight:700;min-width:22px;padding-top:2px;flex-shrink:0}
+.art-body{flex:1;min-width:0}
+.art-text{font-size:13.5px;color:#1a1a1a;line-height:1.55;margin-bottom:5px}
+.art-meta{display:flex;align-items:center;gap:6px}
+.src-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px}
+.art-arr{font-size:13px;color:#ddd;flex-shrink:0;padding-top:2px}
+.no-link .art-arr{display:none}
+.empty{text-align:center;padding:48px;color:#bbb;font-size:13px}
+.footer{text-align:center;font-size:12px;color:#bbb;padding:24px 0}
+.footer a{color:#f97316}
+@media(max-width:540px){.hero h1{font-size:22px}.hl-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-  <div class="header">
-    <h1>📰 营销日报</h1>
-    <div class="meta">2026-03-28 · 共 3 篇</div>
+
+<div class="hero">
+  <a class="hero-back" href="index.html">← 返回目录</a>
+  <div class="hero-badge">📡 每日大厂情报</div>
+  <h1>今日情报<br>精选速览</h1>
+  <div class="hero-sub">覆盖大厂人事 · 薪酬 · 业务 · 组织动态<br>来源：晚点 · 36氪 · AGI Hunt · 阿里妈妈 · IT之家等</div>
+  <div class="hero-tags">
+    <span class="hero-tag">📅 3月28日 周六</span>
+    <span class="hero-tag">🤖 AI 自动整理</span>
+    <span class="hero-tag">📄 共 24 条</span>
   </div>
-  <div class="container">
-    
-    
-        <div class="category">
-          <h2>🤖 AI & 科技前沿 <span class="count">3</span></h2>
-          
-            <div class="article">
-              <div class="article-source">AGI Hunt</div>
-              <a class="article-title" href="https://mp.weixin.qq.com/s/ysLs7xH4Hdc49MBCRiJALg" target="_blank">他们都老了吧？他们在哪里呀？</a>
-              <div class="article-summary"></div>
-            </div>
-            <div class="article">
-              <div class="article-source">AGI Hunt</div>
-              <a class="article-title" href="https://mp.weixin.qq.com/s/ysLs7xH4Hdc49MBCRiJALg" target="_blank">他们都老了吧？他们在哪里呀？</a>
-              <div class="article-summary"></div>
-            </div>
-            <div class="article">
-              <div class="article-source">AGI Hunt</div>
-              <a class="article-title" href="https://mp.weixin.qq.com/s/LACF5LYaXwvxS0Fk34q9WA" target="_blank">壁垒在上下文，不在模型</a>
-              <div class="article-summary"></div>
-            </div>
+</div>
+
+<div class="wrap">
+  
+  <div class="sec-label">⭐ Key Highlights</div>
+  <div class="hl-grid"><a class="hl-card" href="https://www.ithome.com/0/933/594.htm" target="_blank">
+        <div class="hl-cat" style="color:#ef4444">👤 人事变动</div>
+        <div class="hl-text">华为诺亚方舟实验室主任、盘古大模型负责人王云鹤宣布离职</div>
+        <div class="hl-src" style="color:#3b82f6">· IT之家</div>
+        <div class="hl-arrow">阅读详情 →</div></a><div class="hl-card">
+        <div class="hl-cat" style="color:#f59e0b">💰 薪酬期权激励</div>
+        <div class="hl-text">字节跳动年终奖开奖，E绩效年终奖高达55万，大厂里独一份</div>
+        <div class="hl-src" style="color:#07c160">· 搜狗微信</div>
+        <div class="hl-arrow">阅读详情 →</div></div><div class="hl-card">
+        <div class="hl-cat" style="color:#10b981">🚀 业务产品动态</div>
+        <div class="hl-text">字节跳动辞退65名触碰纪律红线员工，其中7人涉刑事犯罪移交司法机关</div>
+        <div class="hl-src" style="color:#07c160">· 搜狗微信</div>
+        <div class="hl-arrow">阅读详情 →</div></div><div class="hl-card">
+        <div class="hl-cat" style="color:#6366f1">🏗️ 组织架构调整</div>
+        <div class="hl-text">字节跳动辞退65名违规员工，内部反腐力度加大，7人涉刑事犯罪移交司法</div>
+        <div class="hl-src" style="color:#07c160">· 搜狗微信</div>
+        <div class="hl-arrow">阅读详情 →</div></div></div>
+  <div class="sec-label">📂 按分类查看</div>
+  
+      <div class="cat-section">
+        <div class="cat-header">
+          <span class="cat-name" style="border-left:3px solid #ef4444;padding-left:8px">① 人事变动</span>
+          <span class="cat-count">3</span>
         </div>
-  </div>
-  <div class="footer">由 Peeta 自动生成 · <a href="index.html">查看归档</a></div>
+        <a class="art-item" href="https://www.ithome.com/0/933/594.htm" target="_blank"><span class="art-num">01</span>
+            <div class="art-body">
+              <div class="art-text">华为诺亚方舟实验室主任、盘古大模型负责人王云鹤宣布离职</div>
+              <div class="art-meta"><span class="src-tag" style="background:#3b82f620;color:#3b82f6">IT之家</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/j3U3YFt5zLCTvfEaj6nH2g" target="_blank"><span class="art-num">02</span>
+            <div class="art-body">
+              <div class="art-text">对话文远知行韩旭：智驾终局论是妄想，不存在必赢的技术路线</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/UT8yLNcWzSN3TUXeJe9qVg" target="_blank"><span class="art-num">03</span>
+            <div class="art-body">
+              <div class="art-text">至简贾鹏：最快具身独角兽半年融资 20 亿，做「六边形战士」才能活</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a>
+      </div>
+      <div class="cat-section">
+        <div class="cat-header">
+          <span class="cat-name" style="border-left:3px solid #f59e0b;padding-left:8px">② 薪酬·期权·激励</span>
+          <span class="cat-count">1</span>
+        </div>
+        <div class="art-item no-link"><span class="art-num">01</span>
+            <div class="art-body">
+              <div class="art-text">字节跳动年终奖开奖，E绩效年终奖高达55万，大厂里独一份</div>
+              <div class="art-meta"><span class="src-tag" style="background:#07c16020;color:#07c160">搜狗微信</span></div>
+            </div>
+            <span class="art-arr">→</span></div>
+      </div>
+      <div class="cat-section">
+        <div class="cat-header">
+          <span class="cat-name" style="border-left:3px solid #10b981;padding-left:8px">③ 业务·产品动态</span>
+          <span class="cat-count">19</span>
+        </div>
+        <div class="art-item no-link"><span class="art-num">01</span>
+            <div class="art-body">
+              <div class="art-text">字节跳动辞退65名触碰纪律红线员工，其中7人涉刑事犯罪移交司法机关</div>
+              <div class="art-meta"><span class="src-tag" style="background:#07c16020;color:#07c160">搜狗微信</span></div>
+            </div>
+            <span class="art-arr">→</span></div><div class="art-item no-link"><span class="art-num">02</span>
+            <div class="art-body">
+              <div class="art-text">字节跳动宣布用AI替代7000个岗位</div>
+              <div class="art-meta"><span class="src-tag" style="background:#07c16020;color:#07c160">搜狗微信</span></div>
+            </div>
+            <span class="art-arr">→</span></div><div class="art-item no-link"><span class="art-num">03</span>
+            <div class="art-body">
+              <div class="art-text">快手市值一日蒸发320亿，程一笑的AI赌局还能走多远？</div>
+              <div class="art-meta"><span class="src-tag" style="background:#07c16020;color:#07c160">搜狗微信</span></div>
+            </div>
+            <span class="art-arr">→</span></div><a class="art-item" href="https://mp.weixin.qq.com/s/MzZjjGrIY5rVpbKrqCNg4w" target="_blank"><span class="art-num">04</span>
+            <div class="art-body">
+              <div class="art-text">美团业绩改善的背后：收缩、省钱，等待阿里犯错</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/U8aRLkTj2d5rMQK4FFl03w" target="_blank"><span class="art-num">05</span>
+            <div class="art-body">
+              <div class="art-text">Momenta 港股秘密递表，预计年内上市</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/sHL6k9vf8UNgYkfaj2qmbA" target="_blank"><span class="art-num">06</span>
+            <div class="art-body">
+              <div class="art-text">火山引擎豆包大模型日均调用量破百万亿 Tokens，AI 云竞争日趋激烈</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/Xf8S_TeBLtC0VIoIxRRvwQ" target="_blank"><span class="art-num">07</span>
+            <div class="art-body">
+              <div class="art-text">京东京造，加速制造 AI+ 爆款</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://www.ithome.com/0/933/617.htm" target="_blank"><span class="art-num">08</span>
+            <div class="art-body">
+              <div class="art-text">京东物流第13架全货机投用，重庆与长三角互发货物实现次日达</div>
+              <div class="art-meta"><span class="src-tag" style="background:#3b82f620;color:#3b82f6">IT之家</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://www.ithome.com/0/933/607.htm" target="_blank"><span class="art-num">09</span>
+            <div class="art-body">
+              <div class="art-text">Meta 大办「AI 培训周」，鼓励员工爱用、多用智能体办公</div>
+              <div class="art-meta"><span class="src-tag" style="background:#3b82f620;color:#3b82f6">IT之家</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/eeE4A5LM97ke_X_0YpV4HQ" target="_blank"><span class="art-num">10</span>
+            <div class="art-body">
+              <div class="art-text">Google 发了个压缩算法，内存砍 6 倍，速度快 8 倍，精度零损失</div>
+              <div class="art-meta"><span class="src-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/Ovk7apTzedkIw7vJ9yG65w" target="_blank"><span class="art-num">11</span>
+            <div class="art-body">
+              <div class="art-text">Claude Code 推出云端模式：/schedule 命令让 AI 自己排班干活</div>
+              <div class="art-meta"><span class="src-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/9qI83Ne-Ac_R9y-yJ6SVnQ" target="_blank"><span class="art-num">12</span>
+            <div class="art-body">
+              <div class="art-text">Harness is the New Dataset：模型智能提升的下一个关键方向</div>
+              <div class="art-meta"><span class="src-tag" style="background:#f59e0b20;color:#f59e0b">海外独角兽</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/LACF5LYaXwvxS0Fk34q9WA" target="_blank"><span class="art-num">13</span>
+            <div class="art-body">
+              <div class="art-text">壁垒在上下文，不在模型</div>
+              <div class="art-meta"><span class="src-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/OFrJXVknM7vw7vrKU7Js-w" target="_blank"><span class="art-num">14</span>
+            <div class="art-body">
+              <div class="art-text">阿里妈妈全新发布「AI万相」：首创多智能体协同工作流，重塑AI时代经营新范式</div>
+              <div class="art-meta"><span class="src-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/FtOdg6fxtUtLWUvRGFQemg" target="_blank"><span class="art-num">15</span>
+            <div class="art-body">
+              <div class="art-text">阿里妈妈Uni Desk焕新，五大能力升级助力春日确定性增长</div>
+              <div class="art-meta"><span class="src-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/mU1WqFDbPKWueyPTmmqSwg" target="_blank"><span class="art-num">16</span>
+            <div class="art-body">
+              <div class="art-text">三大赛道、四大认证！阿里妈妈发布2026「营销伙伴」认证，携手顶尖伙伴共建增长新生态</div>
+              <div class="art-meta"><span class="src-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/UBCBl3lO-TeWSTfEWSgkSQ" target="_blank"><span class="art-num">17</span>
+            <div class="art-body">
+              <div class="art-text">霸王茶姬大起大落：大单品神话破灭，加盟商最后的耐心</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/htV6t9nYNOeEsGBQ4iMsmg" target="_blank"><span class="art-num">18</span>
+            <div class="art-body">
+              <div class="art-text">从新能源车到具身机器人，卧龙电驱再遇老对手汇川技术</div>
+              <div class="art-meta"><span class="src-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span></div>
+            </div>
+            <span class="art-arr">→</span></a><a class="art-item" href="https://mp.weixin.qq.com/s/enk3GFTSY8srX6Na5qUacQ" target="_blank"><span class="art-num">19</span>
+            <div class="art-body">
+              <div class="art-text">Karpathy 最新播客：AI App 将消失、Agent 将碾压实验室</div>
+              <div class="art-meta"><span class="src-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span></div>
+            </div>
+            <span class="art-arr">→</span></a>
+      </div>
+      <div class="cat-section">
+        <div class="cat-header">
+          <span class="cat-name" style="border-left:3px solid #6366f1;padding-left:8px">④ 组织架构调整</span>
+          <span class="cat-count">1</span>
+        </div>
+        <div class="art-item no-link"><span class="art-num">01</span>
+            <div class="art-body">
+              <div class="art-text">字节跳动辞退65名违规员工，内部反腐力度加大，7人涉刑事犯罪移交司法</div>
+              <div class="art-meta"><span class="src-tag" style="background:#07c16020;color:#07c160">搜狗微信</span></div>
+            </div>
+            <span class="art-arr">→</span></div>
+      </div>
+  
+</div>
+
+<div class="footer">由 Peeta 自动整理 · <a href="index.html">查看归档</a></div>
 </body>
 </html>
