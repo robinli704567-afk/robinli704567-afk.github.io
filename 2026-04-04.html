@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日情报 · 2026-04-04</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f4f4f6;color:#1a1a1a;min-height:100vh}
+    a{text-decoration:none;color:inherit}
+
+    /* 顶部英雄区 */
+    .hero{background:linear-gradient(135deg,#ff4e50 0%,#f9a825 100%);padding:32px 20px 24px;position:relative}
+    .hero-back{position:absolute;top:16px;right:20px;background:rgba(255,255,255,0.25);color:#fff;font-size:12px;padding:5px 12px;border-radius:20px;backdrop-filter:blur(4px)}
+    .hero-back:hover{background:rgba(255,255,255,0.4)}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.2);color:#fff;font-size:11px;padding:4px 10px;border-radius:12px;margin-bottom:14px}
+    .hero h1{font-size:28px;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-0.5px;margin-bottom:10px}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:16px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .hero-tag{background:rgba(255,255,255,0.2);color:#fff;font-size:11px;padding:3px 10px;border-radius:10px;backdrop-filter:blur(4px)}
+
+    /* 来源统计 */
+    .source-bar{background:#fff;padding:12px 20px;border-bottom:1px solid #efefef;display:flex;align-items:center;gap:6px;overflow-x:auto;white-space:nowrap}
+    .source-tab{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#555;padding:4px 10px;border-radius:20px;background:#f5f5f5;flex-shrink:0}
+    .source-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+    .source-count{font-size:11px;color:#999}
+
+    /* 主容器 */
+    .container{max-width:740px;margin:0 auto;padding:16px 16px 48px}
+
+    /* Highlights */
+    .section-label{font-size:12px;font-weight:700;color:#888;letter-spacing:0.5px;margin:20px 0 10px;padding-left:2px}
+    .highlights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:4px}
+    .highlight-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .15s,box-shadow .15s;display:block}
+    .highlight-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    .highlight-source{font-size:11px;font-weight:600;margin-bottom:6px}
+    .highlight-title{font-size:13px;font-weight:600;color:#1a1a1a;line-height:1.5;margin-bottom:8px}
+    .highlight-arrow{font-size:11px;color:#aaa}
+
+    /* 主题分类 */
+    .theme-section{background:#fff;border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+    .theme-header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#fafafa;border-bottom:1px solid #f0f0f0}
+    .theme-name{font-size:14px;font-weight:700;color:#1a1a1a}
+    .theme-count{font-size:12px;color:#aaa;background:#f0f0f0;padding:2px 8px;border-radius:10px}
+    .article-item{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #f5f5f5;transition:background .1s}
+    .article-item:last-child{border-bottom:none}
+    .article-item:hover{background:#fafafa}
+    .article-num{font-size:11px;color:#ccc;font-weight:700;min-width:20px}
+    .article-body{flex:1;min-width:0}
+    .article-title{font-size:13.5px;font-weight:500;color:#1a1a1a;line-height:1.5;margin-bottom:4px}
+    .article-meta{display:flex;align-items:center;gap:6px}
+    .article-source-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:8px}
+    .article-arr{font-size:13px;color:#ccc;flex-shrink:0}
+
+    /* 大厂情报 */
+    .bigco-section{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:12px}
+    .bigco-title{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+    .trend-item{font-size:13px;color:#444;line-height:1.7;padding:4px 0;border-bottom:1px solid #f5f5f5}
+    .trend-item:last-child{border-bottom:none}
+
+    /* 空状态 */
+    .empty{text-align:center;padding:40px;color:#bbb;font-size:13px}
+
+    /* Footer */
+    .footer{text-align:center;font-size:12px;color:#bbb;padding:20px 0}
+    .footer a{color:#f97316}
+
+    @media(max-width:600px){
+      .hero h1{font-size:22px}
+      .highlights-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="hero-back" href="index.html">← 返回目录</a>
+  <div class="hero-badge">📡 每日情报</div>
+  <h1>今日内容<br>精选速览</h1>
+  <div class="hero-sub">
+    共收录 30 篇文章，按主题分类，全部含原文链接
+  </div>
+  <div class="hero-tags">
+    <span class="hero-tag">📅 4月4日 周六</span>
+    <span class="hero-tag">🤖 AI 自动抓取整理</span>
+  </div>
+</div>
+
+<div class="source-bar">
+  
+        <span class="source-tab">
+          <span class="source-dot" style="background:#ef4444"></span>
+          晚点LatePost <span class="source-count">12</span>
+        </span>
+        <span class="source-tab">
+          <span class="source-dot" style="background:#6366f1"></span>
+          AGI Hunt <span class="source-count">10</span>
+        </span>
+        <span class="source-tab">
+          <span class="source-dot" style="background:#f97316"></span>
+          阿里妈妈数字营销 <span class="source-count">7</span>
+        </span>
+        <span class="source-tab">
+          <span class="source-dot" style="background:#f59e0b"></span>
+          海外独角兽 <span class="source-count">1</span>
+        </span>
+</div>
+
+<div class="container">
+
+  
+  <div class="section-label">⭐ KEY HIGHLIGHTS</div>
+  <div class="highlights-grid">
+        <a class="highlight-card" href="https://mp.weixin.qq.com/s/ysLs7xH4Hdc49MBCRiJALg" target="_blank">
+          <div class="highlight-source" style="color:#6366f1">AGI Hunt</div>
+          <div class="highlight-title">他们都老了吧？他们在哪里呀？</div>
+          <div class="highlight-arrow">点击阅读原文 →</div>
+        </a>
+        <a class="highlight-card" href="https://mp.weixin.qq.com/s/j3U3YFt5zLCTvfEaj6nH2g" target="_blank">
+          <div class="highlight-source" style="color:#ef4444">晚点LatePost</div>
+          <div class="highlight-title">对话文远知行韩旭：智驾终局论是妄想，不存在必赢的技术路线</div>
+          <div class="highlight-arrow">点击阅读原文 →</div>
+        </a>
+        <a class="highlight-card" href="https://mp.weixin.qq.com/s/9qI83Ne-Ac_R9y-yJ6SVnQ" target="_blank">
+          <div class="highlight-source" style="color:#f59e0b">海外独角兽</div>
+          <div class="highlight-title">Harness is the New Dataset：模型智能提升的下一个关键方向</div>
+          <div class="highlight-arrow">点击阅读原文 →</div>
+        </a></div>
+
+  <div class="section-label">📂 按主题分类</div>
+  
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">🤖 AI 与科技</span>
+            <span class="theme-count">13 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/LACF5LYaXwvxS0Fk34q9WA" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">壁垒在上下文，不在模型</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/9qI83Ne-Ac_R9y-yJ6SVnQ" target="_blank">
+              <span class="article-num">02</span>
+              <div class="article-body">
+                <div class="article-title">Harness is the New Dataset：模型智能提升的下一个关键方向</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f59e0b20;color:#f59e0b">海外独角兽</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/eeE4A5LM97ke_X_0YpV4HQ" target="_blank">
+              <span class="article-num">03</span>
+              <div class="article-body">
+                <div class="article-title">Google 发了个压缩算法，内存砍 6 倍，速度快 8 倍，精度零损失</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/sHL6k9vf8UNgYkfaj2qmbA" target="_blank">
+              <span class="article-num">04</span>
+              <div class="article-body">
+                <div class="article-title">晚点独家丨火山引擎豆包大模型日均调用量破百万亿 Tokens，AI 云竞争日趋激烈</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/Xf8S_TeBLtC0VIoIxRRvwQ" target="_blank">
+              <span class="article-num">05</span>
+              <div class="article-body">
+                <div class="article-title">京东京造，加速制造 AI+ 爆款</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/Ovk7apTzedkIw7vJ9yG65w" target="_blank">
+              <span class="article-num">06</span>
+              <div class="article-body">
+                <div class="article-title">Claude Code 推出云端龙虾：/schedule 命令让 AI 自己排班干活</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/0Q9ZQ28xKvg1FbI7wK8KYQ" target="_blank">
+              <span class="article-num">07</span>
+              <div class="article-body">
+                <div class="article-title">阿里妈妈AI万相体验指南：在哪用？怎么用？丨超级产品100问</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/sVGeofV9uTgvhgR44q8pNA" target="_blank">
+              <span class="article-num">08</span>
+              <div class="article-body">
+                <div class="article-title">模型不是关键，Harness 才是</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/vq61KFl7kc-Q_ixeG_brlg" target="_blank">
+              <span class="article-num">09</span>
+              <div class="article-body">
+                <div class="article-title">AI时代品牌力如何衡量？中国广告协会携手阿里妈妈发布全新行业评估标准</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/enk3GFTSY8srX6Na5qUacQ" target="_blank">
+              <span class="article-num">10</span>
+              <div class="article-body">
+                <div class="article-title">Karpathy 最新播客：我得了 AI 精神病、App 将消失、Agent 将碾压实验室</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/OFrJXVknM7vw7vrKU7Js-w" target="_blank">
+              <span class="article-num">11</span>
+              <div class="article-body">
+                <div class="article-title">阿里妈妈全新发布“AI万相”：首创多智能体协同工作流，重塑AI时代经营新范式</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/IcFABM6v7CAVA4WDLuaHAw" target="_blank">
+              <span class="article-num">12</span>
+              <div class="article-body">
+                <div class="article-title">MiniMax M2.7：第一个参与训练自己的模型，救活了我的龙虾</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/htV6t9nYNOeEsGBQ4iMsmg" target="_blank">
+              <span class="article-num">13</span>
+              <div class="article-body">
+                <div class="article-title">从新能源车到具身机器人，卧龙电驱再遇老对手汇川技术</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">📈 营销 &amp; 增长</span>
+            <span class="theme-count">4 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/mU1WqFDbPKWueyPTmmqSwg" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">三大赛道、四大认证！阿里妈妈发布2026「营销伙伴」认证发布，携手顶尖伙伴共建增长新生态</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/FtOdg6fxtUtLWUvRGFQemg" target="_blank">
+              <span class="article-num">02</span>
+              <div class="article-body">
+                <div class="article-title">阿里妈妈Uni Desk焕新，五大能力升级助力春日确定性增长丨产品so hot</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/is3mGPDauCff8h7Yy1wMSA" target="_blank">
+              <span class="article-num">03</span>
+              <div class="article-body">
+                <div class="article-title">刘润对谈阿里妈妈树羊：电商的下一个时代，正在到来</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/3qWinWozA3ljpwbX6y9ukg" target="_blank">
+              <span class="article-num">04</span>
+              <div class="article-body">
+                <div class="article-title">2026五大品牌经营趋势前瞻！阿里妈妈携手贝恩公司解读未来商业奖标杆案例</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#f9731620;color:#f97316">阿里妈妈数字营销</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">🌍 出海 &amp; 全球化</span>
+            <span class="theme-count">1 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/UT8yLNcWzSN3TUXeJe9qVg" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">至简贾鹏：最快具身独角兽半年融资 20 亿，做 “六边形战士” 才能活</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">💼 商业 &amp; 战略</span>
+            <span class="theme-count">2 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/MzZjjGrIY5rVpbKrqCNg4w" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">美团业绩改善的背后：收缩、省钱，等待阿里犯错</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/U8aRLkTj2d5rMQK4FFl03w" target="_blank">
+              <span class="article-num">02</span>
+              <div class="article-body">
+                <div class="article-title">晚点独家丨Momenta 港股秘密递表，预计年内上市</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">📖 深度 &amp; 洞察</span>
+            <span class="theme-count">2 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/j3U3YFt5zLCTvfEaj6nH2g" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">对话文远知行韩旭：智驾终局论是妄想，不存在必赢的技术路线</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/Czd2gx1M2zMYLIPuDENrzw" target="_blank">
+              <span class="article-num">02</span>
+              <div class="article-body">
+                <div class="article-title">对话亚朵耶律胤：从酒店到零售，我们把那个疯狂的想法变成了现实</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+        <div class="theme-section">
+          <div class="theme-header">
+            <span class="theme-name">📌 其他</span>
+            <span class="theme-count">8 篇</span>
+          </div>
+          
+            <a class="article-item" href="https://mp.weixin.qq.com/s/ysLs7xH4Hdc49MBCRiJALg" target="_blank">
+              <span class="article-num">01</span>
+              <div class="article-body">
+                <div class="article-title">他们都老了吧？他们在哪里呀？</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/oRgwsF5TRJAZ-knedzGbuA" target="_blank">
+              <span class="article-num">02</span>
+              <div class="article-body">
+                <div class="article-title">Anthropic 的 Harness 设计：build to delete</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/RBU56wcNr08PpemmgvDPJg" target="_blank">
+              <span class="article-num">03</span>
+              <div class="article-body">
+                <div class="article-title">mem9：让微信里的龙虾不再失忆</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/Os9mOZZSSHDPP_B5Npk0Eg" target="_blank">
+              <span class="article-num">04</span>
+              <div class="article-body">
+                <div class="article-title">晚点独家丨地平线敲定征程 7 目标算力，舱驾一体产品命名 “星空”</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/rexICR9VVD-K4cLvFEygWA" target="_blank">
+              <span class="article-num">05</span>
+              <div class="article-body">
+                <div class="article-title">2026 年全民养虾，但你养的，到底是谁的虾？</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#6366f120;color:#6366f1">AGI Hunt</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/JOX6bR96BWGSVtx3cCo9yQ" target="_blank">
+              <span class="article-num">06</span>
+              <div class="article-body">
+                <div class="article-title">胜宏科技，头顶藏着 3 只 “靴子”</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/UBCBl3lO-TeWSTfEWSgkSQ" target="_blank">
+              <span class="article-num">07</span>
+              <div class="article-body">
+                <div class="article-title">霸王茶姬大起大落：大单品神话破灭，加盟商最后的耐心</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+            <a class="article-item" href="https://mp.weixin.qq.com/s/2eU_5442rPe2YKWiXDR_5Q" target="_blank">
+              <span class="article-num">08</span>
+              <div class="article-body">
+                <div class="article-title">被 OpenClaw 推上 “风口” 的飞书</div>
+                <div class="article-meta">
+                  <span class="article-source-tag" style="background:#ef444420;color:#ef4444">晚点LatePost</span>
+                </div>
+              </div>
+              <span class="article-arr">→</span>
+            </a>
+        </div>
+  
+  
+
+</div>
+
+<div class="footer">由 Peeta 自动生成 · <a href="index.html">查看归档</a></div>
+
+</body>
+</html>
